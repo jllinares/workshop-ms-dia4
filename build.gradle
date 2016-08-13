@@ -16,6 +16,7 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 apply plugin: 'jacoco'
 apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
 
 jar {
 	baseName = 'lab04'
@@ -44,6 +45,13 @@ eclipse {
 
 jacoco {
     toolVersion = "0.7.6.201602180812"
+}
+
+tasks.withType(FindBugs) {
+	reports {
+		xml.enabled true
+		html.enabled false
+	}	
 }
 
 check.dependsOn jacocoTestReport
